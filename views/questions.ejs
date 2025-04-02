@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/stylesheets/styleA.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="/stylesheets/styleA.css">
 </head>
-<body>
-    <h1>Question Number <%= QNumber %></h1>
-    <h1> <%= Questions %></h1>
-    <form action="/questions/submit" method="POST">
-        <select multiple name="Answer">
-            <option class="choice"><%= Ans1 %></option>
-            <option class="choice"><%= Ans2 %></option>
-            <option class="choice"><%= Ans3 %></option>
-            <option class="choice"><%= Ans4 %></option>
-        </select>
-    <input type="submit">
-    </form>
-    <t1> <%= Status %></t1>
+<body class="quiz-body"><!-- Added custom class -->
 
+  <div class="quiz-container"><!-- Kahoot-style container -->
+    <h2 class="question-number">Question <%= QNumber %></h2>
+    <h1 class="question-text"><%= Questions %></h1>
+
+    <form action="/questions/submit" method="POST" class="answer-form">
+      <!-- Replaced dropdown with colorful buttons -->
+      <button type="submit" name="Answer" value="<%= Ans1 %>" class="answer-button red"> <%= Ans1 %> </button>
+      <button type="submit" name="Answer" value="<%= Ans2 %>" class="answer-button blue"> <%= Ans2 %> </button>
+      <button type="submit" name="Answer" value="<%= Ans3 %>" class="answer-button green"> <%= Ans3 %> </button>
+      <button type="submit" name="Answer" value="<%= Ans4 %>" class="answer-button yellow"> <%= Ans4 %> </button>
+    </form>
+
+    <!-- Status update -->
+    <p class="status-text"><%= Status %></p>
+  </div>
+
+  <script src="/javascripts/scriptA.js"></script>
 </body>
-    <script src="/javascripts/scriptA.js"></script>
 </html>
